@@ -1,0 +1,307 @@
+-- ============================================
+-- CLINIC MANAGEMENT SYSTEM - SAMPLE DATA
+-- 20 records for each table
+-- ============================================
+
+-- ============================================
+-- 1. PATIENTS (20 records)
+-- ============================================
+INSERT INTO PATIENTS (first_name, last_name, gender, date_of_birth, phone, address) VALUES
+('James', 'Anderson', 'Male', '1985-03-12', '076123456', '12 Pademba Road, Freetown'),
+('Mary', 'Johnson', 'Female', '1990-07-25', '077234567', '5 Wilkinson Road, Freetown'),
+('Robert', 'Williams', 'Male', '1978-11-02', '078345678', '23 Siaka Stevens St, Freetown'),
+('Patricia', 'Brown', 'Female', '1995-01-18', '079456789', '8 Bai Bureh Road, Freetown'),
+('Michael', 'Davis', 'Male', '1982-09-30', '076567890', '15 Kissy Road, Freetown'),
+('Linda', 'Miller', 'Female', '1988-04-14', '077678901', '3 Spur Road, Freetown'),
+('David', 'Wilson', 'Male', '1975-12-05', '078789012', '19 Congo Cross, Freetown'),
+('Barbara', 'Moore', 'Female', '1993-06-22', '079890123', '7 Lumley Beach Road, Freetown'),
+('Richard', 'Taylor', 'Male', '1980-02-09', '076901234', '11 Hill Station, Freetown'),
+('Susan', 'Anderson', 'Female', '1992-08-17', '077012345', '4 Aberdeen Road, Freetown'),
+('Joseph', 'Thomas', 'Male', '1987-10-29', '078123450', '21 Goderich Street, Freetown'),
+('Jessica', 'Jackson', 'Female', '1991-05-03', '079234561', '6 Murray Town Road, Freetown'),
+('Charles', 'White', 'Male', '1983-03-21', '076345672', '14 Tower Hill, Freetown'),
+('Karen', 'Harris', 'Female', '1996-09-11', '077456783', '9 Fourah Bay Road, Freetown'),
+('Thomas', 'Martin', 'Male', '1979-07-08', '078567894', '17 Wellington Street, Freetown'),
+('Nancy', 'Thompson', 'Female', '1994-11-26', '079678905', '2 Brookfields, Freetown'),
+('Christopher', 'Garcia', 'Male', '1986-01-15', '076789016', '13 Regent Road, Freetown'),
+('Betty', 'Martinez', 'Female', '1989-04-07', '077890127', '10 Cline Town, Freetown'),
+('Daniel', 'Robinson', 'Male', '1981-06-19', '078901238', '16 Wallace Johnson St, Freetown'),
+('Sandra', 'Clark', 'Female', '1997-02-28', '079012349', '20 Bottom Mango, Freetown');
+
+-- ============================================
+-- 2. DOCTORS (20 records)
+-- ============================================
+INSERT INTO DOCTORS (doctor_name, specialization, phone) VALUES
+('Dr. Abdul Kamara', 'Cardiology', '076111222'),
+('Dr. Fatmata Sesay', 'Pediatrics', '077222333'),
+('Dr. Mohamed Bangura', 'General Medicine', '078333444'),
+('Dr. Aminata Koroma', 'Dermatology', '079444555'),
+('Dr. Ibrahim Conteh', 'Orthopedics', '076555666'),
+('Dr. Isata Turay', 'Gynecology', '077666777'),
+('Dr. Sahr Mansaray', 'Neurology', '078777888'),
+('Dr. Mariama Jalloh', 'ENT', '079888999'),
+('Dr. Alusine Kargbo', 'Cardiology', '076999000'),
+('Dr. Hawa Fofana', 'Pediatrics', '077000111'),
+('Dr. Foday Sankoh', 'General Medicine', '078111223'),
+('Dr. Zainab Bah', 'Dermatology', '079222334'),
+('Dr. Brima Sillah', 'Orthopedics', '076333445'),
+('Dr. Adama Kanu', 'Gynecology', '077444556'),
+('Dr. Sorie Yillah', 'Neurology', '078555667'),
+('Dr. Kadiatu Sheriff', 'ENT', '079666778'),
+('Dr. Lamin Jawara', 'Cardiology', '076777889'),
+('Dr. Marie Coker', 'Pediatrics', '077888990'),
+('Dr. Osman Dumbuya', 'General Medicine', '078999001'),
+('Dr. Yeama Vandi', 'Dermatology', '079000112');
+
+-- ============================================
+-- 3. APPOINTMENTS (20 records)
+-- ============================================
+INSERT INTO APPOINTMENTS (patient_id, doctor_id, appointment_date, status) VALUES
+(1, 1, '2026-01-05', 'Completed'),
+(2, 2, '2026-01-07', 'Completed'),
+(3, 3, '2026-01-10', 'Completed'),
+(4, 4, '2026-01-12', 'Cancelled'),
+(5, 5, '2026-01-15', 'Completed'),
+(6, 6, '2026-01-18', 'Completed'),
+(7, 7, '2026-01-20', 'Pending'),
+(8, 8, '2026-01-22', 'Completed'),
+(9, 9, '2026-01-25', 'Completed'),
+(10, 10, '2026-01-28', 'Completed'),
+(11, 11, '2026-02-02', 'Pending'),
+(12, 12, '2026-02-05', 'Completed'),
+(13, 13, '2026-02-08', 'Completed'),
+(14, 14, '2026-02-10', 'Cancelled'),
+(15, 15, '2026-02-13', 'Completed'),
+(16, 16, '2026-02-16', 'Completed'),
+(17, 17, '2026-02-19', 'Pending'),
+(18, 18, '2026-02-22', 'Completed'),
+(19, 19, '2026-02-25', 'Completed'),
+(20, 20, '2026-02-28', 'Completed');
+
+-- ============================================
+-- 4. TREATMENTS (20 records)
+-- ============================================
+INSERT INTO TREATMENTS (appointment_id, diagnosis, treatment_description) VALUES
+(1, 'Hypertension', 'Prescribed blood pressure medication and advised lifestyle changes.'),
+(2, 'Common Cold', 'Rest, fluids, and symptomatic treatment recommended.'),
+(3, 'Malaria', 'Antimalarial therapy initiated and patient monitored for 3 days.'),
+(4, 'Skin Rash', 'Topical cream prescribed for allergic dermatitis.'),
+(5, 'Fractured Wrist', 'Wrist immobilized with cast, follow-up in 6 weeks.'),
+(6, 'Pregnancy Checkup', 'Routine prenatal examination, all vitals normal.'),
+(7, 'Migraine', 'Pain management plan and neurological evaluation scheduled.'),
+(8, 'Ear Infection', 'Antibiotic ear drops prescribed for 7 days.'),
+(9, 'Arrhythmia', 'ECG performed, referred for cardiac monitoring.'),
+(10, 'Flu', 'Antiviral medication and bed rest advised.'),
+(11, 'Diabetes Type 2', 'Blood sugar levels monitored, insulin dosage adjusted.'),
+(12, 'Eczema', 'Moisturizing treatment and steroid cream prescribed.'),
+(13, 'Sprained Ankle', 'Compression bandage applied, advised RICE method.'),
+(14, 'Menstrual Disorder', 'Hormonal therapy discussed and prescribed.'),
+(15, 'Chronic Headache', 'MRI scan ordered to rule out underlying causes.'),
+(16, 'Sinusitis', 'Nasal decongestant and antibiotics prescribed.'),
+(17, 'High Cholesterol', 'Statins prescribed and dietary changes recommended.'),
+(18, 'Bronchitis', 'Cough syrup and antibiotics prescribed for 5 days.'),
+(19, 'Acid Reflux', 'Antacid medication prescribed and diet modification advised.'),
+(20, 'Acne', 'Topical retinoid cream prescribed for 4 weeks.');
+
+-- ============================================
+-- 5. MEDICATIONS (20 records)
+-- ============================================
+INSERT INTO MEDICATIONS (medication_name, dosage, price) VALUES
+('Amoxicillin', '500mg', 5.50),
+('Paracetamol', '500mg', 2.00),
+('Lisinopril', '10mg', 7.25),
+('Hydrocortisone Cream', '1%', 4.75),
+('Ibuprofen', '400mg', 3.00),
+('Folic Acid', '5mg', 1.50),
+('Sumatriptan', '50mg', 12.00),
+('Ciprofloxacin Ear Drops', '0.3%', 6.80),
+('Metoprolol', '25mg', 8.40),
+('Oseltamivir', '75mg', 15.00),
+('Metformin', '850mg', 6.20),
+('Betamethasone Cream', '0.05%', 5.10),
+('Diclofenac Gel', '1%', 4.30),
+('Norethisterone', '5mg', 9.00),
+('Naproxen', '250mg', 3.60),
+('Loratadine', '10mg', 2.80),
+('Atorvastatin', '20mg', 10.50),
+('Azithromycin', '250mg', 8.90),
+('Omeprazole', '20mg', 4.60),
+('Tretinoin Cream', '0.025%', 11.30);
+
+-- ============================================
+-- 6. PRESCRIPTIONS (20 records)
+-- ============================================
+INSERT INTO PRESCRIPTIONS (treatment_id, medication_id, quantity) VALUES
+(1, 3, 30),
+(2, 2, 20),
+(3, 1, 14),
+(4, 4, 1),
+(5, 5, 15),
+(6, 6, 30),
+(7, 7, 10),
+(8, 8, 1),
+(9, 9, 30),
+(10, 10, 10),
+(11, 11, 60),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 21),
+(15, 15, 20),
+(16, 16, 14),
+(17, 17, 30),
+(18, 18, 6),
+(19, 19, 28),
+(20, 20, 1);-- ============================================
+-- CLINIC MANAGEMENT SYSTEM - SAMPLE DATA
+-- 20 records for each table
+-- ============================================
+
+-- ============================================
+-- 1. PATIENTS (20 records)
+-- ============================================
+INSERT INTO PATIENTS (first_name, last_name, gender, date_of_birth, phone, address) VALUES
+('James', 'Anderson', 'Male', '1985-03-12', '076123456', '12 Pademba Road, Freetown'),
+('Mary', 'Johnson', 'Female', '1990-07-25', '077234567', '5 Wilkinson Road, Freetown'),
+('Robert', 'Williams', 'Male', '1978-11-02', '078345678', '23 Siaka Stevens St, Freetown'),
+('Patricia', 'Brown', 'Female', '1995-01-18', '079456789', '8 Bai Bureh Road, Freetown'),
+('Michael', 'Davis', 'Male', '1982-09-30', '076567890', '15 Kissy Road, Freetown'),
+('Linda', 'Miller', 'Female', '1988-04-14', '077678901', '3 Spur Road, Freetown'),
+('David', 'Wilson', 'Male', '1975-12-05', '078789012', '19 Congo Cross, Freetown'),
+('Barbara', 'Moore', 'Female', '1993-06-22', '079890123', '7 Lumley Beach Road, Freetown'),
+('Richard', 'Taylor', 'Male', '1980-02-09', '076901234', '11 Hill Station, Freetown'),
+('Susan', 'Anderson', 'Female', '1992-08-17', '077012345', '4 Aberdeen Road, Freetown'),
+('Joseph', 'Thomas', 'Male', '1987-10-29', '078123450', '21 Goderich Street, Freetown'),
+('Jessica', 'Jackson', 'Female', '1991-05-03', '079234561', '6 Murray Town Road, Freetown'),
+('Charles', 'White', 'Male', '1983-03-21', '076345672', '14 Tower Hill, Freetown'),
+('Karen', 'Harris', 'Female', '1996-09-11', '077456783', '9 Fourah Bay Road, Freetown'),
+('Thomas', 'Martin', 'Male', '1979-07-08', '078567894', '17 Wellington Street, Freetown'),
+('Nancy', 'Thompson', 'Female', '1994-11-26', '079678905', '2 Brookfields, Freetown'),
+('Christopher', 'Garcia', 'Male', '1986-01-15', '076789016', '13 Regent Road, Freetown'),
+('Betty', 'Martinez', 'Female', '1989-04-07', '077890127', '10 Cline Town, Freetown'),
+('Daniel', 'Robinson', 'Male', '1981-06-19', '078901238', '16 Wallace Johnson St, Freetown'),
+('Sandra', 'Clark', 'Female', '1997-02-28', '079012349', '20 Bottom Mango, Freetown');
+
+-- ============================================
+-- 2. DOCTORS (20 records)
+-- ============================================
+INSERT INTO DOCTORS (doctor_name, specialization, phone) VALUES
+('Dr. Abdul Kamara', 'Cardiology', '076111222'),
+('Dr. Fatmata Sesay', 'Pediatrics', '077222333'),
+('Dr. Mohamed Bangura', 'General Medicine', '078333444'),
+('Dr. Aminata Koroma', 'Dermatology', '079444555'),
+('Dr. Ibrahim Conteh', 'Orthopedics', '076555666'),
+('Dr. Isata Turay', 'Gynecology', '077666777'),
+('Dr. Sahr Mansaray', 'Neurology', '078777888'),
+('Dr. Mariama Jalloh', 'ENT', '079888999'),
+('Dr. Alusine Kargbo', 'Cardiology', '076999000'),
+('Dr. Hawa Fofana', 'Pediatrics', '077000111'),
+('Dr. Foday Sankoh', 'General Medicine', '078111223'),
+('Dr. Zainab Bah', 'Dermatology', '079222334'),
+('Dr. Brima Sillah', 'Orthopedics', '076333445'),
+('Dr. Adama Kanu', 'Gynecology', '077444556'),
+('Dr. Sorie Yillah', 'Neurology', '078555667'),
+('Dr. Kadiatu Sheriff', 'ENT', '079666778'),
+('Dr. Lamin Jawara', 'Cardiology', '076777889'),
+('Dr. Marie Coker', 'Pediatrics', '077888990'),
+('Dr. Osman Dumbuya', 'General Medicine', '078999001'),
+('Dr. Yeama Vandi', 'Dermatology', '079000112');
+
+-- ============================================
+-- 3. APPOINTMENTS (20 records)
+-- ============================================
+INSERT INTO APPOINTMENTS (patient_id, doctor_id, appointment_date, status) VALUES
+(1, 1, '2026-01-05', 'Completed'),
+(2, 2, '2026-01-07', 'Completed'),
+(3, 3, '2026-01-10', 'Completed'),
+(4, 4, '2026-01-12', 'Cancelled'),
+(5, 5, '2026-01-15', 'Completed'),
+(6, 6, '2026-01-18', 'Completed'),
+(7, 7, '2026-01-20', 'Pending'),
+(8, 8, '2026-01-22', 'Completed'),
+(9, 9, '2026-01-25', 'Completed'),
+(10, 10, '2026-01-28', 'Completed'),
+(11, 11, '2026-02-02', 'Pending'),
+(12, 12, '2026-02-05', 'Completed'),
+(13, 13, '2026-02-08', 'Completed'),
+(14, 14, '2026-02-10', 'Cancelled'),
+(15, 15, '2026-02-13', 'Completed'),
+(16, 16, '2026-02-16', 'Completed'),
+(17, 17, '2026-02-19', 'Pending'),
+(18, 18, '2026-02-22', 'Completed'),
+(19, 19, '2026-02-25', 'Completed'),
+(20, 20, '2026-02-28', 'Completed');
+
+-- ============================================
+-- 4. TREATMENTS (20 records)
+-- ============================================
+INSERT INTO TREATMENTS (appointment_id, diagnosis, treatment_description) VALUES
+(1, 'Hypertension', 'Prescribed blood pressure medication and advised lifestyle changes.'),
+(2, 'Common Cold', 'Rest, fluids, and symptomatic treatment recommended.'),
+(3, 'Malaria', 'Antimalarial therapy initiated and patient monitored for 3 days.'),
+(4, 'Skin Rash', 'Topical cream prescribed for allergic dermatitis.'),
+(5, 'Fractured Wrist', 'Wrist immobilized with cast, follow-up in 6 weeks.'),
+(6, 'Pregnancy Checkup', 'Routine prenatal examination, all vitals normal.'),
+(7, 'Migraine', 'Pain management plan and neurological evaluation scheduled.'),
+(8, 'Ear Infection', 'Antibiotic ear drops prescribed for 7 days.'),
+(9, 'Arrhythmia', 'ECG performed, referred for cardiac monitoring.'),
+(10, 'Flu', 'Antiviral medication and bed rest advised.'),
+(11, 'Diabetes Type 2', 'Blood sugar levels monitored, insulin dosage adjusted.'),
+(12, 'Eczema', 'Moisturizing treatment and steroid cream prescribed.'),
+(13, 'Sprained Ankle', 'Compression bandage applied, advised RICE method.'),
+(14, 'Menstrual Disorder', 'Hormonal therapy discussed and prescribed.'),
+(15, 'Chronic Headache', 'MRI scan ordered to rule out underlying causes.'),
+(16, 'Sinusitis', 'Nasal decongestant and antibiotics prescribed.'),
+(17, 'High Cholesterol', 'Statins prescribed and dietary changes recommended.'),
+(18, 'Bronchitis', 'Cough syrup and antibiotics prescribed for 5 days.'),
+(19, 'Acid Reflux', 'Antacid medication prescribed and diet modification advised.'),
+(20, 'Acne', 'Topical retinoid cream prescribed for 4 weeks.');
+
+-- ============================================
+-- 5. MEDICATIONS (20 records)
+-- ============================================
+INSERT INTO MEDICATIONS (medication_name, dosage, price) VALUES
+('Amoxicillin', '500mg', 5.50),
+('Paracetamol', '500mg', 2.00),
+('Lisinopril', '10mg', 7.25),
+('Hydrocortisone Cream', '1%', 4.75),
+('Ibuprofen', '400mg', 3.00),
+('Folic Acid', '5mg', 1.50),
+('Sumatriptan', '50mg', 12.00),
+('Ciprofloxacin Ear Drops', '0.3%', 6.80),
+('Metoprolol', '25mg', 8.40),
+('Oseltamivir', '75mg', 15.00),
+('Metformin', '850mg', 6.20),
+('Betamethasone Cream', '0.05%', 5.10),
+('Diclofenac Gel', '1%', 4.30),
+('Norethisterone', '5mg', 9.00),
+('Naproxen', '250mg', 3.60),
+('Loratadine', '10mg', 2.80),
+('Atorvastatin', '20mg', 10.50),
+('Azithromycin', '250mg', 8.90),
+('Omeprazole', '20mg', 4.60),
+('Tretinoin Cream', '0.025%', 11.30);
+
+-- ============================================
+-- 6. PRESCRIPTIONS (20 records)
+-- ============================================
+INSERT INTO PRESCRIPTIONS (treatment_id, medication_id, quantity) VALUES
+(1, 3, 30),
+(2, 2, 20),
+(3, 1, 14),
+(4, 4, 1),
+(5, 5, 15),
+(6, 6, 30),
+(7, 7, 10),
+(8, 8, 1),
+(9, 9, 30),
+(10, 10, 10),
+(11, 11, 60),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 21),
+(15, 15, 20),
+(16, 16, 14),
+(17, 17, 30),
+(18, 18, 6),
+(19, 19, 28),
+(20, 20, 1);
