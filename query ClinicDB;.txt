@@ -1,0 +1,173 @@
+SELECT
+-- Basic SELECT: list all patients
+SELECT patient_id, first_name, last_name, gender, date_of_birth
+FROM PATIENTS;
+
+WHERE
+-- Find all female patients
+SELECT first_name, last_name, phone
+FROM PATIENTS
+WHERE gender = 'Female';
+
+-- Find appointments with a specific status
+SELECT appointment_id, patient_id, doctor_id, appointment_date
+FROM APPOINTMENTS
+WHERE status = 'Completed';
+
+-- Find doctors specialized in Cardiology
+SELECT doctor_id, doctor_name, phone
+FROM DOCTORS
+WHERE specialization = 'Cardiology';
+-- List patients alphabetically by last name
+SELECT first_name, last_name
+FROM PATIENTS
+ORDER BY last_name ASC;
+
+ORDER
+-- List appointments by most recent date first
+SELECT appointment_id, patient_id, appointment_date
+FROM APPOINTMENTS
+ORDER BY appointment_date DESC;
+
+-- List medications by price, highest first
+SELECT medication_name, dosage, price
+FROM MEDICATIONS
+ORDER BY price DESC;
+
+COUNT
+-- Count total number of patients
+SELECT COUNT(*) AS total_patients
+FROM PATIENTS;
+
+-- Count appointments per doctor
+SELECT doctor_id, COUNT(*) AS total_appointments
+FROM APPOINTMENTS
+GROUP BY doctor_id;
+
+-- Count how many treatments each appointment has
+SELECT appointment_id, COUNT(*) AS treatment_count
+FROM TREATMENTS
+GROUP BY appointment_id;
+-- ============================================
+-- CLINIC MANAGEMENT SYSTEM - REPORTING QUERIES
+-- AVG, LIMIT, Appointment & Treatment/Prescription Reports
+-- ============================================
+
+-- ============================================
+-- 5. AVG AGGREGATE
+-- ============================================
+
+-- Average price of all medications
+SELECT AVG(price) AS average_medication_price
+FROM MEDICATIONS;
+
+-- Average quantity prescribed per medication
+SELECT medication_id, AVG(quantity) AS avg_quantity
+FROM PRESCRIPTIONS
+GROUP BY medication_id;
+
+
+-- ============================================
+-- 6. LIMIT CLAUSE
+-- ============================================
+
+-- Get the 5 most recent appointments
+SELECT appointment_id, patient_id, appointment_date
+FROM APPOINTMENTS
+ORDER BY appointment_date DESC
+LIMIT 5;
+
+-- Get the top 3 most expensive medications
+SELECT medication_name, price
+FROM MEDICATIONS
+ORDER BY price DESC
+LIMIT 3;
+
+
+-- ============================================
+-- 7. APPOINTMENT REPORTING (WITH JOINS)
+-- ============================================
+
+-- Full appointment report: patient, doctor, date, status
+SELECT 
+    a.appointment_id,
+    p.first_name || ' ' || p.last_name AS patient_name,
+    d.doctor_name,
+    d.specialization,
+    a.appointment_date,
+    a.status
+FROM APPOINTMENTS a
+JOIN PATIENTS p ON a.patient_id = p.patient_id
+JOIN DOCTORS d ON a.doctor_id = d.doctor_id
+ORDER BY a.appointment_date DESC;
+
+-- Count appointments per patient
+SELECT 
+    p.patient_id,
+    p.first_name || ' ' || p.last_name AS patient_name,
+    COUNT(a.appointment_id) AS total_appointments
+FROM PATIENTS p
+LEFT JOIN APPOINTMENTS a ON p.patient_id = a.patient_id
+GROUP BY p.patient_id, patient_name
+ORDER BY total_appointments DESC;
+
+-- Appointments scheduled within a date range
+SELECT appointment_id, patient_id, doctor_id, appointment_date, status
+FROM APPOINTMENTS
+WHERE appointment_date BETWEEN '2026-01-01' AND '2026-06-30'
+ORDER BY appointment_date;
+
+
+-- ============================================
+-- 8. TREATMENT AND PRESCRIPTION REPORTING (WITH JOINS)
+-- ============================================
+
+-- Full treatment report with patient and doctor info
+SELECT 
+    t.treatment_id,
+    p.first_name || ' ' || p.last_name AS patient_name,
+    d.doctor_name,
+    t.diagnosis,
+    t.treatment_description,
+    a.appointment_date
+FROM TREATMENTS t
+JOIN APPOINTMENTS a ON t.appointment_id = a.appointment_id
+JOIN PATIENTS p ON a.patient_id = p.patient_id
+JOIN DOCTORS d ON a.doctor_id = d.doctor_id
+ORDER BY a.appointment_date DESC;
+
+-- Full prescription report: medication, quantity, treatment diagnosis
+SELECT 
+    pr.prescription_id,
+    t.diagnosis,
+    m.medication_name,
+    m.dosage,
+    pr.quantity,
+    (m.price * pr.quantity) AS total_cost
+FROM PRESCRIPTIONS pr
+JOIN TREATMENTS t ON pr.treatment_id = t.treatment_id
+JOIN MEDICATIONS m ON pr.medication_id = m.medication_id
+ORDER BY total_cost DESC;
+
+-- Total medication cost per patient
+SELECT 
+    p.first_name || ' ' || p.last_name AS patient_name,
+    SUM(m.price * pr.quantity) AS total_medication_cost
+FROM PRESCRIPTIONS pr
+JOIN TREATMENTS t ON pr.treatment_id = t.treatment_id
+JOIN APPOINTMENTS a ON t.appointment_id = a.appointment_id
+JOIN PATIENTS p ON a.patient_id = p.patient_id
+JOIN MEDICATIONS m ON pr.medication_id = m.medication_id
+GROUP BY p.patient_id, patient_name
+ORDER BY total_medication_cost DESC;
+
+-- Most prescribed medications (count across all prescriptions)
+SELECT 
+    m.medication_name,
+    COUNT(pr.prescription_id) AS times_prescribed,
+    AVG(pr.quantity) AS avg_quantity_per_prescription
+FROM PRESCRIPTIONS pr
+JOIN MEDICATIONS m ON pr.medication_id = m.medication_id
+GROUP BY m.medication_id, m.medication_name
+ORDER BY times_prescribed DESC
+LIMIT 5;
